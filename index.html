@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="de">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meine Testanwendung</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: #edf3f8; color: #17283b; font: 18px system-ui, sans-serif; }
+  main { width: min(100%, 540px); padding: 40px; background: white; border-radius: 24px; box-shadow: 0 20px 60px #17283b15; }
+  .badge { color: #087454; font-size: 14px; font-weight: 700; }
+  h1 { font-size: clamp(28px, 6vw, 40px); letter-spacing: -1px; }
+  p { line-height: 1.6; }
+  output { display: block; margin: 24px 0; font-size: 64px; font-weight: 750; }
+  button { padding: 12px 18px; border: 0; border-radius: 10px; background: #235be0; color: white; font: inherit; cursor: pointer; }
+  button + button { background: #e8edf4; color: #17283b; margin: 8px; }
+  button:focus-visible { outline: 3px solid #e69b16; outline-offset: 3px; }
+</style>
+<main>
+  <span class="badge">● Bereit zum Testen</span>
+  <h1>Hallo aus deiner Cloud!</h1>
+  <p>Deine erste kleine Webanwendung läuft. Teste den Zähler mit den Schaltflächen.</p>
+  <output id="count" aria-live="polite" aria-label="Zählerstand">0</output>
+  <button id="increment" type="button">+1 zählen</button>
+  <button id="reset" type="button">Zurücksetzen</button>
+</main>
+<script>
+  const count = document.querySelector('#count');
+  document.querySelector('#increment').addEventListener('click', () => {
+    count.value = String(Number(count.value) + 1);
+  });
+  document.querySelector('#reset').addEventListener('click', () => { count.value = '0'; });
+</script>
+</html>
